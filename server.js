@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import OrderRouters from "./Router/OrderRouter.js";
 import FeedbackRouters from "./Router/FeedbackRouter.js";
-import ProductRouters from "./Router/Product_Router.js";
+import ProductRouters from "./Router/ProductRouter.js";
 import LeadRouters from "./Router/LeadRouter.js";
 import TaskRouters from "./Router/TaskRouter.js";
 import MeetRouters from "./Router/MeetRouter.js";
@@ -13,7 +13,6 @@ import OppertunityRouters from "./Router/OppRouter.js";
 import EmpRouters from "./Router/EmpRouter.js";
 import CompanyRouters from "./Router/CompanyRouter.js";
 import UserRouters from "./Router/UserRouter.js";
-import note from "./models/Notemodel.js";
 import NoteRouters from "./Router/NoteRouter.js";
 
 const app = express();
