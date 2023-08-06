@@ -42,6 +42,21 @@ TaskRouters.delete("/:id", async (req, res) => {
     });
 });
 
+TaskRouters.delete("/person/:id", async (req, res) => {
+  task.remove({ contact: req.params.id })
+    .then((result) => {
+      res.status(200).json({
+        message: "data deleted",
+        reslt: result,
+      });
+    })
+    .catch((err) => {
+      req.status(404).json({
+        Error: err,
+      });
+    });
+});
+
 //update
 
 TaskRouters.put("/:id", async (req, res) => {

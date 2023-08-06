@@ -18,6 +18,7 @@ NoteRouters.post("/add", async (req, res) => {
     title: req.body.title,
     person: req.body.person,
     notedata: req.body.notedata,
+    createdby: req.body.createdby,
   });
 
   await kudar.save();
@@ -28,6 +29,21 @@ NoteRouters.post("/add", async (req, res) => {
 
 NoteRouters.delete("/:id", async (req, res) => {
   note.remove({ _id: req.params.id })
+    .then((result) => {
+      res.status(200).json({
+        message: "data deleted",
+        reslt: result,
+      });
+    })
+    .catch((err) => {
+      req.status(404).json({
+        Error: err,
+      });
+    });
+});
+
+NoteRouters.delete("/person/:id", async (req, res) => {
+  note.remove({ person: req.params.id })
     .then((result) => {
       res.status(200).json({
         message: "data deleted",
@@ -52,6 +68,7 @@ NoteRouters.put("/:id", async (req, res) => {
             title: req.body.title,
             person: req.body.person,
             notedata: req.body.notedata,
+            createdby: req.body.createdby,
         },
       }
     )

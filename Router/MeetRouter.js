@@ -43,6 +43,21 @@ MeetRouters.delete("/:id", async (req, res) => {
     });
 });
 
+MeetRouters.delete("/person/:id", async (req, res) => {
+  meet.remove({ contact: req.params.id })
+    .then((result) => {
+      res.status(200).json({
+        message: "data deleted",
+        reslt: result,
+      });
+    })
+    .catch((err) => {
+      req.status(404).json({
+        Error: err,
+      });
+    });
+});
+
 //update
 
 MeetRouters.put("/:id", async (req, res) => {
