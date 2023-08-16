@@ -18,7 +18,7 @@ TaskRouters.post("/add", async (req, res) => {
     subject: req.body.subject,
     date: req.body.date,
     status: req.body.status,
-    contact: req.body.contact,
+    employee: req.body.employee,
     createdby: req.body.createdby,
   });
   await kudar.save();
@@ -68,7 +68,7 @@ TaskRouters.put("/:id", async (req, res) => {
           subject: req.body.subject,
           date: req.body.date,
           status: req.body.status,
-          contact: req.body.contact,
+          employee: req.body.employee,
           createdby: req.body.createdby,
         },
       }

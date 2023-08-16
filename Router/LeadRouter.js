@@ -21,6 +21,7 @@ LeadRouters.post("/add", async (req, res) => {
     email: req.body.email,
     adress: req.body.adress,
     leadstatus: req.body.leadstatus,
+    leadtaken: req.body.leadtaken,
   });
 
   await kudar.save();
@@ -58,6 +59,7 @@ LeadRouters.put("/:id", async (req, res) => {
           email: req.body.email,
           adress: req.body.adress,
           leadstatus: req.body.leadstatus,
+          leadtaken: req.body.leadtaken,
         },
       }
     )

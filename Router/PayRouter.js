@@ -1,29 +1,26 @@
 import express from "express";
-import order from "../models/Ordermodel.js";
+import payment from "../models/Paymodel.js";
 
-const OrderRouters = express.Router();
+const PayRouters = express.Router();
 
 //reading data
 
-OrderRouters.get("/all", async (req, res) => {
-  const sogali = await order.find();
+PayRouters.get("/all", async (req, res) => {
+  const sogali = await payment.find();
   res.send(sogali);
 });
 
 
 //post
 
-OrderRouters.post("/add", async (req, res) => {
-  const kudar = new order({
+PayRouters.post("/add", async (req, res) => {
+  const kudar = new payment({
     productname: req.body.productname,
-    image: req.body.image,
+    orderid: req.body.orderid,
     customername: req.body.customername,
     number: req.body.number,
-    address: req.body.address,
     amount: req.body.amount,
     quantity: req.body.quantity,
-    orderstatus: req.body.orderstatus,
-    deliver: req.body.deliver,
   });
 
   await kudar.save();
@@ -32,8 +29,8 @@ OrderRouters.post("/add", async (req, res) => {
 
 //Delete
 
-OrderRouters.delete("/:id", async (req, res) => {
-  order.remove({ _id: req.params.id })
+PayRouters.delete("/:id", async (req, res) => {
+  payment.remove({ _id: req.params.id })
     .then((result) => {
       res.status(200).json({
         message: "data deleted",
@@ -49,21 +46,18 @@ OrderRouters.delete("/:id", async (req, res) => {
 
 //update
 
-OrderRouters.put("/:id", async (req, res) => {
+PayRouters.put("/:id", async (req, res) => {
   console.log(req.params.id);
-  order.findByIdAndUpdate(
+  payment.findByIdAndUpdate(
       { _id: req.params.id },
       {
         $set: {
           productname: req.body.productname,
-          image: req.body.image,
+          orderid: req.body.orderid,
           customername: req.body.customername,
           number: req.body.number,
-          address: req.body.address,
           amount: req.body.amount,
           quantity: req.body.quantity,
-          orderstatus: req.body.orderstatus,
-          deliver: req.body.deliver,
         },
       }
     )
@@ -80,4 +74,4 @@ OrderRouters.put("/:id", async (req, res) => {
     });
 });
 
-export default OrderRouters;
+export default PayRouters;

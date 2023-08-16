@@ -8,12 +8,13 @@ import LeadRouters from "./Router/LeadRouter.js";
 import TaskRouters from "./Router/TaskRouter.js";
 import MeetRouters from "./Router/MeetRouter.js";
 import ContactRouters from "./Router/ContRouter.js";
-import LostleadRouters from "./Router/LostleadRouter.js";
 import OppertunityRouters from "./Router/OppRouter.js";
 import EmpRouters from "./Router/EmpRouter.js";
 import CompanyRouters from "./Router/CompanyRouter.js";
 import UserRouters from "./Router/UserRouter.js";
 import NoteRouters from "./Router/NoteRouter.js";
+import PayRouters from "./Router/PayRouter.js";
+import ConvertRouters from "./Router/ConvertRouter.js";
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use('/api/lead/',LeadRouters)
 app.use('/api/task/',TaskRouters)
 app.use('/api/meet/',MeetRouters)
 app.use('/api/contact/',ContactRouters)
-app.use('/api/lostlead/',LostleadRouters)
+app.use('/api/convert/',ConvertRouters)
 app.use('/api/opp/',OppertunityRouters)
 app.use('/api/emp/',EmpRouters)
 app.use('/api/company/',CompanyRouters)
@@ -35,6 +36,7 @@ app.use('/api/order/',OrderRouters)
 app.use('/api/feedback/',FeedbackRouters)
 app.use('/api/product/',ProductRouters)
 app.use('/api/note/',NoteRouters)
+app.use('/api/payment/',PayRouters)
 
 mongoose.connect(process.env.MONGODB_URL).then(()=>{
     console.log('connected to db')
