@@ -72,4 +72,27 @@ ProductRouters.put("/:id", async (req, res) => {
     });
 });
 
+ProductRouters.put("/quantities/:id", async (req, res) => {
+  console.log(req.params.id);
+  product.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          quantity: req.body.quantity,
+        },
+      }
+    )
+    .then((result) => {
+      res.status(200).json({
+        update: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).json({
+        Error: err,
+      });
+    });
+});
+
 export default ProductRouters;
